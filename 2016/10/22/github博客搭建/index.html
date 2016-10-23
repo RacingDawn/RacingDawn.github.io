@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="杂文," />
 
 
 
@@ -84,12 +84,34 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="RacingDawn's Blog">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="配置Github
+
+本地生成SSH公钥
+12$ ssh-keygen -t rsa -C &amp;quot;your_email@youremail.com&amp;quot;
+
+将SSH公钥添加到Github
+在Github网站上找到Account Setting -&amp;gt; &amp;quot;SSH Keys&amp;quot; -&amp;gt; Add SSH key，将id_rsa.pub中的内容粘贴到key一栏，点击a">
+<meta property="og:type" content="article">
+<meta property="og:title" content="github博客搭建">
+<meta property="og:url" content="http://yoursite.com/2016/10/22/github博客搭建/index.html">
 <meta property="og:site_name" content="RacingDawn's Blog">
+<meta property="og:description" content="配置Github
+
+本地生成SSH公钥
+12$ ssh-keygen -t rsa -C &amp;quot;your_email@youremail.com&amp;quot;
+
+将SSH公钥添加到Github
+在Github网站上找到Account Setting -&amp;gt; &amp;quot;SSH Keys&amp;quot; -&amp;gt; Add SSH key，将id_rsa.pub中的内容粘贴到key一栏，点击a">
+<meta property="og:updated_time" content="2016-10-23T05:13:18.521Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="RacingDawn's Blog">
+<meta name="twitter:title" content="github博客搭建">
+<meta name="twitter:description" content="配置Github
+
+本地生成SSH公钥
+12$ ssh-keygen -t rsa -C &amp;quot;your_email@youremail.com&amp;quot;
+
+将SSH公钥添加到Github
+在Github网站上找到Account Setting -&amp;gt; &amp;quot;SSH Keys&amp;quot; -&amp;gt; Add SSH key，将id_rsa.pub中的内容粘贴到key一栏，点击a">
 
 
 
@@ -110,10 +132,10 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/10/22/github博客搭建/"/>
 
 
-  <title> RacingDawn's Blog </title>
+  <title> github博客搭建 | RacingDawn's Blog </title>
 </head>
 
 <body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
@@ -134,9 +156,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left 
-   page-home 
- ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
@@ -239,9 +259,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
   
@@ -261,10 +281,7 @@
             
             
               
-                
-                <a class="post-title-link" href="/2016/10/22/github博客搭建/" itemprop="url">
-                  github博客搭建
-                </a>
+                github博客搭建
               
             
           </h1>
@@ -320,9 +337,7 @@
       
 
       
-        
-          
-            <ol>
+        <ol>
 <li><p>配置Github</p>
 <ul>
 <li><p>本地生成SSH公钥</p>
@@ -412,36 +427,45 @@
 </li>
 </ul>
 
-          
+      
+    </div>
+
+    <div>
+      
         
+
       
     </div>
 
     <div>
       
-    </div>
+        
 
-    <div>
       
     </div>
 
     <footer class="post-footer">
       
-
+        <div class="post-tags">
+          
+            <a href="/tags/杂文/" rel="tag">#杂文</a>
+          
+        </div>
       
 
       
+
       
-        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -449,6 +473,14 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/10/22/github博客搭建/"
+           data-title="github博客搭建" data-url="http://yoursite.com/2016/10/22/github博客搭建/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -468,8 +500,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -512,6 +553,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#经上述几步则已成功部署好博客，下面为修改博客的主题和如何发布新的文章"><span class="nav-number">1.</span> <span class="nav-text">经上述几步则已成功部署好博客，下面为修改博客的主题和如何发布新的文章</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#修改主题（着采用的是Next主题）："><span class="nav-number">1.1.</span> <span class="nav-text">修改主题（着采用的是Next主题）：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#发表博文"><span class="nav-number">1.2.</span> <span class="nav-text">发表博文</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -608,6 +660,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
 
   
 
