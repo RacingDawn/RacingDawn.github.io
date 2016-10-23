@@ -207,22 +207,6 @@
           </a>
         </li>
       
-        
-        <li class="menu-item menu-item-schedule">
-          <a href="/schedule" rel="section">
-            
-            日程
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-commonweal">
-          <a href="/404.html" rel="section">
-            
-            公益404
-          </a>
-        </li>
-      
 
       
     </ul>
@@ -326,7 +310,7 @@
 <li><p>配置Github</p>
 <ul>
 <li><p>本地生成SSH公钥</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">$ ssh-keygen -t rsa -C &quot;your_email@youremail.com&quot;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ ssh-keygen -t rsa -C &quot;your_email@youremail.com&quot;</div></pre></td></tr></table></figure>
 </li>
 <li><p>将SSH公钥添加到Github</p>
 <p>在Github网站上找到<code>Account Setting -&gt; &quot;SSH Keys&quot; -&gt; Add SSH key</code>，将<code>id_rsa.pub</code>中的内容粘贴到<code>key</code>一栏，点击<code>add key</code>按钮。</p>
@@ -339,29 +323,32 @@
 <li><p>安装Hexo</p>
 <ul>
 <li><p>安装 NodeJS</p>
-<p><code>curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.30.1/install.sh | bash</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.30.1/install.sh | bash  </div><div class="line">nvm install 4</div></pre></td></tr></table></figure>
+<p>或者到Nodejs官网直接下载安装<code>https://nodejs.org/en/</code></p>
+</li>
+<li><p>安装 Hexo</p>
+<p><code>npm install hexo-cli -g</code></p>
+</li>
+<li><p>初始化工作</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">hexo init blog</div><div class="line">cd blog</div><div class="line">npm install</div><div class="line">hexo server</div></pre></td></tr></table></figure>
+<p>使用hexo server命令，Hexo会在本地启动一个HTTP服务，这样就可以在本地打开预览效果了，地址为<code>http://0.0.0.0:4000</code>，停止预览可以使用Ctrl+C终止掉进程</p>
+</li>
+</ul>
+</li>
+<li><p>将本地文件部署到 GitHub</p>
+<p> 在所建立的blog目录下打开git shell</p>
+<ul>
+<li><code>npm install hexo-deployer-git --save</code> </li>
+<li><p>修改 Hexo 中的 _config.yml 文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">deploy:</div><div class="line">  type: git</div><div class="line">  repo: git@github.com:RacingDawn/RacingDawn.github.io</div><div class="line">  branch: master</div></pre></td></tr></table></figure>
+</li>
+<li><p>上传部署至github</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">hexo clean</div><div class="line">hexo generate</div><div class="line">hexo deploy</div></pre></td></tr></table></figure>
 </li>
 </ul>
 </li>
 </ol>
-<pre><code>  `nvm install 4`
-
-
-  或者到Nodejs官网直接下载安装`https://nodejs.org/en/`
-
-- 安装 Hexo
-
-  `npm install hexo-cli -g`
-
-
-- 初始化工作
-
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">      hexo init blog</div><div class="line">      cd blog</div><div class="line">      npm install</div><div class="line">      hexo server</div><div class="line"></div><div class="line">      ```    </div><div class="line"></div><div class="line">      使用hexo server命令，Hexo会在本地启动一个HTTP服务，这样就可以在本地打开预览效果了，地址为`http://0.0.0.0:4000`，停止预览可以使用Ctrl+C终止掉进程</div><div class="line"></div><div class="line">4. 将本地文件部署到 GitHub</div><div class="line"></div><div class="line">    在所建立的blog目录下打开git shell</div><div class="line"></div><div class="line">    - `npm install hexo-deployer-git --save` </div><div class="line"></div><div class="line">    - 修改 Hexo 中的 _config.yml 文件</div><div class="line"></div><div class="line">      ```      </div><div class="line"></div><div class="line">      deploy:</div><div class="line"></div><div class="line">        type: git</div><div class="line"></div><div class="line">        repo: git@github.com:RacingDawn/RacingDawn.github.io</div><div class="line"></div><div class="line">        branch: master</div></pre></td></tr></table></figure>
-
-- 上传部署至github
-
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">hexo clean</div><div class="line">hexo generate</div><div class="line">hexo deploy</div></pre></td></tr></table></figure>
-</code></pre><h2 id="经上述几步则已成功部署好博客，下面为修改博客的主题和如何发布新的文章"><a href="#经上述几步则已成功部署好博客，下面为修改博客的主题和如何发布新的文章" class="headerlink" title="经上述几步则已成功部署好博客，下面为修改博客的主题和如何发布新的文章"></a>经上述几步则已成功部署好博客，下面为修改博客的主题和如何发布新的文章</h2><h3 id="修改主题（着采用的是Next主题）："><a href="#修改主题（着采用的是Next主题）：" class="headerlink" title="修改主题（着采用的是Next主题）："></a>修改主题（着采用的是Next主题）：</h3><ul>
+<h2 id="经上述几步则已成功部署好博客，下面为修改博客的主题和如何发布新的文章"><a href="#经上述几步则已成功部署好博客，下面为修改博客的主题和如何发布新的文章" class="headerlink" title="经上述几步则已成功部署好博客，下面为修改博客的主题和如何发布新的文章"></a>经上述几步则已成功部署好博客，下面为修改博客的主题和如何发布新的文章</h2><h3 id="修改主题（着采用的是Next主题）："><a href="#修改主题（着采用的是Next主题）：" class="headerlink" title="修改主题（着采用的是Next主题）："></a>修改主题（着采用的是Next主题）：</h3><ul>
 <li><p>安装NexT主题</p>
 <p>Hexo 有两份主要的配置文件（_config.yml），一份位于站点根目录下，另一份位于主题目录下。为了描述方便，在以下说明中，将前者称为<code>站点配置文件</code>，后者称为<code>主题配置文件</code></p>
 </li>
@@ -406,8 +393,9 @@
 <p>  三个”-“后面就是博文的正文内容，接下来就是正儿八经地撰写博文了。</p>
 <ul>
 <li><p>发博文</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">hexo clean</div><div class="line"></div><div class="line">hexo generate</div><div class="line">(若要本地预览就先执行 hexo server)</div><div class="line">hexo deploy</div><div class="line">``` </div><div class="line"></div><div class="line">快捷命令：</div></pre></td></tr></table></figure>
-<p>hexo g == hexo generate<br>hexo d == hexo deploy<br>hexo s == hexo server<br>hexo n == hexo new<br>```</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">hexo clean</div><div class="line">hexo generate</div><div class="line">(若要本地预览就先执行 hexo server)</div><div class="line">hexo deploy</div></pre></td></tr></table></figure>
+<p>快捷命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">hexo g == hexo generate</div><div class="line">hexo d == hexo deploy</div><div class="line">hexo s == hexo server</div><div class="line">hexo n == hexo new</div></pre></td></tr></table></figure>
 <p>还能组合使用，如：<code>hexo d -g</code></p>
 </li>
 </ul>
