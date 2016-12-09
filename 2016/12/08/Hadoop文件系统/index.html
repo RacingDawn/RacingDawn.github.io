@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Hadoop," />
 
 
 
@@ -84,12 +84,43 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="RacingDawn's Blog">
-<meta property="og:url" content="http://yoursite.com/tags/getKth/index.html">
+<meta name="description" content="文件系统的实现
+块管理：
+以磁盘为例，磁盘在逻辑上会划分为磁道、柱面和扇区；扇区是磁盘的读写单位，也是磁盘读写时候的最小寻址单位，一个扇区一般是512字节（而后也有4096字节的）
+对于随机存储设备的块管理方式：
+
+连续分配：
+
+链接表：类似于链表，每个块中都会保存下一个存储单元的位置
+
+索引链式表：为了克服链接表的不足，取出每个磁盘块的指针字段，把它放到一个索引表（索引表存放S在内存中）中">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hadoop文件系统">
+<meta property="og:url" content="http://yoursite.com/2016/12/08/Hadoop文件系统/index.html">
 <meta property="og:site_name" content="RacingDawn's Blog">
+<meta property="og:description" content="文件系统的实现
+块管理：
+以磁盘为例，磁盘在逻辑上会划分为磁道、柱面和扇区；扇区是磁盘的读写单位，也是磁盘读写时候的最小寻址单位，一个扇区一般是512字节（而后也有4096字节的）
+对于随机存储设备的块管理方式：
+
+连续分配：
+
+链接表：类似于链表，每个块中都会保存下一个存储单元的位置
+
+索引链式表：为了克服链接表的不足，取出每个磁盘块的指针字段，把它放到一个索引表（索引表存放S在内存中）中">
+<meta property="og:updated_time" content="2016-12-08T07:56:29.257Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="RacingDawn's Blog">
+<meta name="twitter:title" content="Hadoop文件系统">
+<meta name="twitter:description" content="文件系统的实现
+块管理：
+以磁盘为例，磁盘在逻辑上会划分为磁道、柱面和扇区；扇区是磁盘的读写单位，也是磁盘读写时候的最小寻址单位，一个扇区一般是512字节（而后也有4096字节的）
+对于随机存储设备的块管理方式：
+
+连续分配：
+
+链接表：类似于链表，每个块中都会保存下一个存储单元的位置
+
+索引链式表：为了克服链接表的不足，取出每个磁盘块的指针字段，把它放到一个索引表（索引表存放S在内存中）中">
 
 
 
@@ -110,10 +141,10 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/tags/getKth/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/12/08/Hadoop文件系统/"/>
 
 
-  <title> 标签: getKth | RacingDawn's Blog </title>
+  <title> Hadoop文件系统 | RacingDawn's Blog </title>
 </head>
 
 <body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
@@ -134,7 +165,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left  ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
@@ -214,46 +245,196 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-collapse">
-    <div class="collection-title">
-      <h2 >
-        getKth
-        <small>标签</small>
-      </h2>
-    </div>
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
 
     
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Hadoop文件系统
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-12-08T10:48:24+08:00" content="2016-12-08">
+              2016-12-08
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Hadoop/" itemprop="url" rel="index">
+                    <span itemprop="name">Hadoop</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/12/08/Hadoop文件系统/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/08/Hadoop文件系统/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/12/08/Hadoop文件系统/" class="leancloud_visitors" data-flag-title="Hadoop文件系统">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
       
 
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
-    <header class="post-header">
+      
+        <h3 id="文件系统的实现"><a href="#文件系统的实现" class="headerlink" title="文件系统的实现"></a>文件系统的实现</h3><ol>
+<li><p>块管理：</p>
+<p>以磁盘为例，磁盘在逻辑上会划分为磁道、柱面和扇区；扇区是磁盘的读写单位，也是磁盘读写时候的最小寻址单位，一个扇区一般是512字节（而后也有4096字节的）</p>
+<p>对于随机存储设备的块管理方式：</p>
+<ul>
+<li><p>连续分配：</p>
+</li>
+<li><p>链接表：类似于链表，每个块中都会保存下一个存储单元的位置</p>
+</li>
+<li><p>索引链式表：为了克服链接表的不足，取出每个磁盘块的指针字段，把它放到一个索引表（索引表存放S在内存中）中</p>
+</li>
+</ul>
+</li>
+<li>目录管理</li>
+<li>存储媒体上文件系统管理</li>
+<li>存储空间管理</li>
+</ol>
+<h3 id="Linux文件系统"><a href="#Linux文件系统" class="headerlink" title="Linux文件系统"></a>Linux文件系统</h3><ol>
+<li>Linux本地文件系统<ul>
+<li>Ext2（Second Extended Filesystem）：第二拓展文件系统</li>
+<li>Ext3（Third Extended Filesystem）：第三拓展文件系统，块的大小为4M<br>inode（索引节点）类似于索引链式表</li>
+</ul>
+</li>
+<li>虚拟文件系统</li>
+</ol>
+<h3 id="分布式文件系统"><a href="#分布式文件系统" class="headerlink" title="分布式文件系统"></a>分布式文件系统</h3><p>目的：允许物理上分散的计算机用户使用公共的文件系统，共享数据和存储空间</p>
+<ol>
+<li>NFS（网络文件系统）：可以在不同机器间共享网络文件系统</li>
+</ol>
+<h3 id="Hadoop抽象文件系统"><a href="#Hadoop抽象文件系统" class="headerlink" title="Hadoop抽象文件系统"></a>Hadoop抽象文件系统</h3><p><code>org.apache.hadoop.fs.Filesystem</code></p>
+<p>Hadoop具体文件系统</p>
+<ul>
+<li>RawLocalFileSystem：用于访问本地文件系统</li>
+<li>ChecksumFileSystem：保证数据的完整性，希望在存储时和进行网络传输时不会引入错误</li>
+<li>RawInMemoryFileSystem：不依赖于其它任何文件系统，实现简单</li>
+</ul>
 
-      <h1 class="post-title">
+      
+    </div>
+
+    <div>
+      
         
-            <a class="post-title-link" href="/2016/11/23/中位数和顺序统计量（getKth）/" itemprop="url">
-              
-                <span itemprop="name">中位数和顺序统计量（getKth）</span>
-              
-            </a>
+
+      
+    </div>
+
+    <div>
+      
         
-      </h1>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-11-23T10:18:24+08:00"
-              content="2016-11-23" >
-          11-23
-        </time>
-      </div>
+      
+    </div>
 
-    </header>
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Hadoop/" rel="tag">#Hadoop</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/12/08/Hadoop远程过程调用/" rel="next" title="Hadoop远程过程调用">
+                <i class="fa fa-chevron-left"></i> Hadoop远程过程调用
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/12/08/Hdfs/" rel="prev" title="Hdfs概述">
+                Hdfs概述 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </article>
 
 
-    
-  </div>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -261,6 +442,14 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/12/08/Hadoop文件系统/"
+           data-title="Hadoop文件系统" data-url="http://yoursite.com/2016/12/08/Hadoop文件系统/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -280,8 +469,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -331,6 +529,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#文件系统的实现"><span class="nav-number">1.</span> <span class="nav-text">文件系统的实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Linux文件系统"><span class="nav-number">2.</span> <span class="nav-text">Linux文件系统</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分布式文件系统"><span class="nav-number">3.</span> <span class="nav-text">分布式文件系统</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Hadoop抽象文件系统"><span class="nav-number">4.</span> <span class="nav-text">Hadoop抽象文件系统</span></a></li></ol></div>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -427,6 +636,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
 
   
 

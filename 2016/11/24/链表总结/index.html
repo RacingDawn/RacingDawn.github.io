@@ -87,10 +87,10 @@
 <meta name="description" content="单链表的创建和遍历1234567891011121314151617181920212223242526272829303132333435363738394041424344454647public class LinkList &amp;#123;  //Linked List Node  static class LinkNode&amp;#123;      int value;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Leetcode中的链表总结">
-<meta property="og:url" content="http://yoursite.com/2016/10/24/链表总结/index.html">
+<meta property="og:url" content="http://yoursite.com/2016/11/24/链表总结/index.html">
 <meta property="og:site_name" content="RacingDawn's Blog">
 <meta property="og:description" content="单链表的创建和遍历1234567891011121314151617181920212223242526272829303132333435363738394041424344454647public class LinkList &amp;#123;  //Linked List Node  static class LinkNode&amp;#123;      int value;">
-<meta property="og:updated_time" content="2016-11-26T11:59:56.261Z">
+<meta property="og:updated_time" content="2016-12-05T12:54:12.877Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode中的链表总结">
 <meta name="twitter:description" content="单链表的创建和遍历1234567891011121314151617181920212223242526272829303132333435363738394041424344454647public class LinkList &amp;#123;  //Linked List Node  static class LinkNode&amp;#123;      int value;">
@@ -114,7 +114,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/10/24/链表总结/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/11/24/链表总结/"/>
 
 
   <title> Leetcode中的链表总结 | RacingDawn's Blog </title>
@@ -251,8 +251,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-10-24T16:18:24+08:00" content="2016-10-24">
-              2016-10-24
+            <time itemprop="dateCreated" datetime="2016-11-24T16:18:24+08:00" content="2016-11-24">
+              2016-11-24
             </time>
           </span>
 
@@ -281,8 +281,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/10/24/链表总结/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/10/24/链表总结/" itemprop="commentsCount"></span>
+                <a href="/2016/11/24/链表总结/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/24/链表总结/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -292,7 +292,7 @@
 
           
           
-             <span id="/2016/10/24/链表总结/" class="leancloud_visitors" data-flag-title="Leetcode中的链表总结">
+             <span id="/2016/11/24/链表总结/" class="leancloud_visitors" data-flag-title="Leetcode中的链表总结">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -415,7 +415,7 @@
 <li><p><a href="https://leetcode.com/problems/sort-list/" target="_blank" rel="external">Sort List</a>：直接将链表排序</p>
 <p>思路：使用归并排序，时间复杂度可为O(nlogn)</p>
 <ul>
-<li><p>自下而上，即递归的思想</p>
+<li><p>自上而下，即递归的思想</p>
  <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> ListNode <span class="title">sortList</span><span class="params">(ListNode head)</span> </span>&#123; <span class="comment">//归并排序，时间复杂度为O(nlogn)</span></div><div class="line">   <span class="keyword">if</span> (head == <span class="keyword">null</span> || head.next == <span class="keyword">null</span>) &#123;</div><div class="line">       <span class="keyword">return</span> head;</div><div class="line">   &#125;</div><div class="line">   ListNode half = head;</div><div class="line">   ListNode preHalf = <span class="keyword">null</span>;</div><div class="line">   ListNode end = head;</div><div class="line">   <span class="keyword">while</span> (end != <span class="keyword">null</span> &amp;&amp; end.next != <span class="keyword">null</span>) &#123;</div><div class="line">       preHalf = half;</div><div class="line">       half = half.next;</div><div class="line">       end = end.next.next;</div><div class="line">   &#125;</div><div class="line">   preHalf.next = <span class="keyword">null</span>;</div><div class="line">   <span class="keyword">return</span> merge(sortList(head), sortList(half));</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> ListNode <span class="title">merge</span><span class="params">(ListNode head, ListNode half)</span> </span>&#123;</div><div class="line">   ListNode dummy = <span class="keyword">new</span> ListNode(<span class="number">0</span>);</div><div class="line">   dummy.next = head;</div><div class="line">   ListNode pre = dummy;</div><div class="line">   ListNode curFirst = head;</div><div class="line">   ListNode curSecond = half;</div><div class="line">   <span class="keyword">while</span> (curFirst != <span class="keyword">null</span> &amp;&amp; curSecond != <span class="keyword">null</span>) &#123;</div><div class="line">       <span class="keyword">if</span> (curFirst.val &gt; curSecond.val) &#123;</div><div class="line">           pre.next = curSecond;</div><div class="line">           curSecond = curSecond.next;</div><div class="line">           pre.next.next = curFirst;</div><div class="line">       &#125; <span class="keyword">else</span> curFirst = curFirst.next;</div><div class="line">       pre = pre.next;</div><div class="line">   &#125;</div><div class="line">   <span class="keyword">if</span> (curSecond != <span class="keyword">null</span>) &#123;</div><div class="line">       pre.next = curSecond;</div><div class="line">   &#125;</div><div class="line">   <span class="keyword">return</span> dummy.next;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
 <li><p>自下而上，即迭代</p>
@@ -487,13 +487,17 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/10/23/中位数和顺序统计量（getKth）/" rel="next" title="中位数和顺序统计量（getKth）">
+              <a href="/2016/11/23/中位数和顺序统计量（getKth）/" rel="next" title="中位数和顺序统计量（getKth）">
                 <i class="fa fa-chevron-left"></i> 中位数和顺序统计量（getKth）
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/11/25/树的总结/" rel="prev" title="Leetcode中的链表总结">
+                Leetcode中的链表总结 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -519,8 +523,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/10/24/链表总结/"
-           data-title="Leetcode中的链表总结" data-url="http://yoursite.com/2016/10/24/链表总结/">
+      <div class="ds-thread" data-thread-key="2016/11/24/链表总结/"
+           data-title="Leetcode中的链表总结" data-url="http://yoursite.com/2016/11/24/链表总结/">
       </div>
     
   </div>
@@ -565,7 +569,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">3</span>
+              <span class="site-state-item-count">10</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -573,7 +577,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -582,7 +586,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

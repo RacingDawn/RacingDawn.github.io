@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo," />
+  <meta name="keywords" content="Java," />
 
 
 
@@ -84,37 +84,25 @@
 
 
 
-<meta name="description" content="部署博客
-配置Github
-
-本地生成SSH公钥
-1$ ssh-keygen -t rsa -C &amp;quot;your_email@youremail.com&amp;quot;
-
-将SSH公钥添加到Github
-在Github网站上找到Account Setting -&amp;gt; &amp;quot;SSH Keys&amp;quot; -&amp;gt; Add SSH key，将id_rsa.pub中的内容粘贴到key一栏，">
+<meta name="description" content="Comparable 简介
+Comparable是排序接口
+若一个类实现了Comparable接口，则表示该类支持排序（比如Integer、String等）
+因此存在“实现Comparable接口的类的对象的List列表(或数组)”排序时，无需使用比较器；“实现Comparable接口的类的对象”也可以用作“有序映射(如TreeMap)”中的键或“有序集合(TreeSet)”中的元素，而不需要指定">
 <meta property="og:type" content="article">
-<meta property="og:title" content="github博客搭建">
-<meta property="og:url" content="http://yoursite.com/2016/10/22/github博客搭建/index.html">
+<meta property="og:title" content="Java中Comparable和Comparator比较">
+<meta property="og:url" content="http://yoursite.com/2016/11/30/Java中Comparable和Comparator比较/index.html">
 <meta property="og:site_name" content="RacingDawn's Blog">
-<meta property="og:description" content="部署博客
-配置Github
-
-本地生成SSH公钥
-1$ ssh-keygen -t rsa -C &amp;quot;your_email@youremail.com&amp;quot;
-
-将SSH公钥添加到Github
-在Github网站上找到Account Setting -&amp;gt; &amp;quot;SSH Keys&amp;quot; -&amp;gt; Add SSH key，将id_rsa.pub中的内容粘贴到key一栏，">
-<meta property="og:updated_time" content="2016-11-23T12:02:07.870Z">
+<meta property="og:description" content="Comparable 简介
+Comparable是排序接口
+若一个类实现了Comparable接口，则表示该类支持排序（比如Integer、String等）
+因此存在“实现Comparable接口的类的对象的List列表(或数组)”排序时，无需使用比较器；“实现Comparable接口的类的对象”也可以用作“有序映射(如TreeMap)”中的键或“有序集合(TreeSet)”中的元素，而不需要指定">
+<meta property="og:updated_time" content="2016-11-30T11:22:07.254Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="github博客搭建">
-<meta name="twitter:description" content="部署博客
-配置Github
-
-本地生成SSH公钥
-1$ ssh-keygen -t rsa -C &amp;quot;your_email@youremail.com&amp;quot;
-
-将SSH公钥添加到Github
-在Github网站上找到Account Setting -&amp;gt; &amp;quot;SSH Keys&amp;quot; -&amp;gt; Add SSH key，将id_rsa.pub中的内容粘贴到key一栏，">
+<meta name="twitter:title" content="Java中Comparable和Comparator比较">
+<meta name="twitter:description" content="Comparable 简介
+Comparable是排序接口
+若一个类实现了Comparable接口，则表示该类支持排序（比如Integer、String等）
+因此存在“实现Comparable接口的类的对象的List列表(或数组)”排序时，无需使用比较器；“实现Comparable接口的类的对象”也可以用作“有序映射(如TreeMap)”中的键或“有序集合(TreeSet)”中的元素，而不需要指定">
 
 
 
@@ -135,10 +123,10 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/10/22/github博客搭建/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/11/30/Java中Comparable和Comparator比较/"/>
 
 
-  <title> github博客搭建 | RacingDawn's Blog </title>
+  <title> Java中Comparable和Comparator比较 | RacingDawn's Blog </title>
 </head>
 
 <body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
@@ -260,7 +248,7 @@
             
             
               
-                github博客搭建
+                Java中Comparable和Comparator比较
               
             
           </h1>
@@ -272,8 +260,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-10-22T16:38:24+08:00" content="2016-10-22">
-              2016-10-22
+            <time itemprop="dateCreated" datetime="2016-11-30T09:33:24+08:00" content="2016-11-30">
+              2016-11-30
             </time>
           </span>
 
@@ -286,8 +274,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Hexo/" itemprop="url" rel="index">
-                    <span itemprop="name">Hexo</span>
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
                   </a>
                 </span>
 
@@ -302,8 +290,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/10/22/github博客搭建/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/10/22/github博客搭建/" itemprop="commentsCount"></span>
+                <a href="/2016/11/30/Java中Comparable和Comparator比较/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/30/Java中Comparable和Comparator比较/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -313,7 +301,7 @@
 
           
           
-             <span id="/2016/10/22/github博客搭建/" class="leancloud_visitors" data-flag-title="github博客搭建">
+             <span id="/2016/11/30/Java中Comparable和Comparator比较/" class="leancloud_visitors" data-flag-title="Java中Comparable和Comparator比较">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -335,100 +323,53 @@
       
 
       
-        <h3 id="部署博客"><a href="#部署博客" class="headerlink" title="部署博客"></a>部署博客</h3><ol>
-<li><p>配置Github</p>
-<ul>
-<li><p>本地生成SSH公钥</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ ssh-keygen -t rsa -C &quot;your_email@youremail.com&quot;</div></pre></td></tr></table></figure>
+        <h3 id="Comparable-简介"><a href="#Comparable-简介" class="headerlink" title="Comparable 简介"></a>Comparable 简介</h3><ol>
+<li><p><code>Comparable</code>是排序接口</p>
+<p>若一个类实现了Comparable接口，则表示<code>该类支持排序</code>（比如Integer、String等）</p>
+<p>因此存在“实现Comparable接口的类的对象的List列表(或数组)”排序时，无需使用比较器；“实现Comparable接口的类的对象”也可以用作“有序映射(如TreeMap)”中的键或“有序集合(TreeSet)”中的元素，而不需要指定比较器</p>
 </li>
-<li><p>将SSH公钥添加到Github</p>
-<p>在Github网站上找到<code>Account Setting -&gt; &quot;SSH Keys&quot; -&gt; Add SSH key</code>，将<code>id_rsa.pub</code>中的内容粘贴到<code>key</code>一栏，点击<code>add key</code>按钮。</p>
-</li>
-</ul>
-</li>
-<li><p>创建你的Github Page   </p>
-<p> 登录<code>https://github.com/yourname</code>，点击<code>Repositories -&gt; New</code>创建一个新的仓库。注意，<code>Repository name</code>一定要设置为<code>yourname.github.io</code>，其他选项默认，点确认。然后在这个仓库的页面<code>https://github.com/yourname/yourname.github.io</code>的右边栏点<code>Settings</code>往下拉找到<code>GitHub Pages -&gt; Automatic Page generator</code>，一路Next即可。等几分钟，访问<code>http://yourname.github.io</code>就能看到你创建的页面了。</p>
-</li>
-<li><p>安装Hexo</p>
-<ul>
-<li><p>安装 NodeJS</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.30.1/install.sh | bash  </div><div class="line">nvm install 4</div></pre></td></tr></table></figure>
-<p>或者到Nodejs官网直接下载安装<code>https://nodejs.org/en/</code></p>
-</li>
-<li><p>安装 Hexo</p>
-<p><code>npm install hexo-cli -g</code></p>
-</li>
-<li><p>初始化工作</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">hexo init blog</div><div class="line">cd blog</div><div class="line">npm install</div><div class="line">hexo server</div></pre></td></tr></table></figure>
-<p>使用hexo server命令，Hexo会在本地启动一个HTTP服务，这样就可以在本地打开预览效果了，地址为<code>http://0.0.0.0:4000</code>，停止预览可以使用Ctrl+C终止掉进程</p>
-</li>
-</ul>
-</li>
-<li><p>将本地文件部署到 GitHub</p>
-<p> 在所建立的blog目录下打开git shell</p>
-<ul>
-<li><code>npm install hexo-deployer-git --save</code></li>
-<li><p>修改 Hexo 中的 _config.yml 文件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">deploy:</div><div class="line">  type: git</div><div class="line">  repo: git@github.com:RacingDawn/RacingDawn.github.io</div><div class="line">  branch: master</div></pre></td></tr></table></figure>
-</li>
-<li><p>上传部署至github</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">hexo clean</div><div class="line">hexo generate</div><div class="line">hexo deploy</div></pre></td></tr></table></figure>
-</li>
-</ul>
+<li><p><code>Comparable</code>定义</p>
+<p><code>Comparable</code>接口仅仅只包括一个函数，它的定义如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> java.lang;</div><div class="line"><span class="keyword">import</span> java.util.*;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Comparable</span>&lt;<span class="title">T</span>&gt; </span>&#123;</div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compareTo</span><span class="params">(T o)</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>假设我们通过 x.compareTo(y) 来“比较x和y的大小”。若返回“负数”，意味着“x比y小”；返回“零”，意味着“x等于y”；返回“正数”，意味着“x大于y”。</p>
+</blockquote>
 </li>
 </ol>
-<p>经上述几步则已成功部署好博客，下面为修改博客的主题和如何发布新的文章</p>
-<h3 id="修改主题（这采用的是Next主题）"><a href="#修改主题（这采用的是Next主题）" class="headerlink" title="修改主题（这采用的是Next主题）"></a>修改主题（这采用的是Next主题）</h3><ul>
-<li><p>安装NexT主题</p>
-<p>Hexo 有两份主要的配置文件（_config.yml），一份位于站点根目录下，另一份位于主题目录下。为了描述方便，在以下说明中，将前者称为<code>站点配置文件</code>，后者称为<code>主题配置文件</code></p>
+<h3 id="Comparator-简介"><a href="#Comparator-简介" class="headerlink" title="Comparator 简介"></a>Comparator 简介</h3><ol>
+<li><p><code>Comparator</code>是比较器接口</p>
+<p>我们若需要控制某个类的次序，而该类本身不支持排序(即没有实现Comparable接口)；那么，我们可以建立一个“该类的比较器”来进行排序</p>
+<p>也就是说，我们可以通过“实现Comparator类来新建一个比较器”，然后通过该比较器对类进行排序</p>
 </li>
-<li><p>下载 NexT 主题</p>
-<p>使用<code>Git Shell</code>进入blog文件夹，输入以下两条命令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cd Hexo</div><div class="line">git clone https://github.com/iissnan/hexo-theme-next themes/next</div></pre></td></tr></table></figure>
+<li><p><code>Comparator</code>定义</p>
+<p><code>Comparator</code>接口包括两个函数，它的定义如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> java.util;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Comparator</span>&lt;<span class="title">T</span>&gt; </span>&#123;</div><div class="line">  <span class="function"><span class="keyword">int</span> <span class="title">compare</span><span class="params">(T o1, T o2)</span></span>;</div><div class="line">  <span class="function"><span class="keyword">boolean</span> <span class="title">equals</span><span class="params">(Object obj)</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>若一个类要实现Comparator接口：它一定要实现compareTo(T o1, T o2) 函数，但可以不实现 equals(Object obj) 函数。<br>  因为任何类，默认都是已经实现了equals(Object obj)的。 Java中的一切类都是继承于java.lang.Object，在Object.java中实现了equals(Object obj)函数；所以，其它所有的类也相当于都实现了该函数。<br>  int compare(T o1, T o2) 是“比较o1和o2的大小”。返回“负数”，意味着“o1比o2小”；返回“零”，意味着“o1等于o2”；返回“正数”，意味着“o1大于o2”</p>
+</blockquote>
 </li>
-<li><p>启用NexT主题</p>
-<p>下载完成后，打开<code>站点配置文件</code>，找到<code>theme</code>字段，并将其值更改为<code>next</code></p>
+</ol>
+<h3 id="Comparator和Comparable比较"><a href="#Comparator和Comparable比较" class="headerlink" title="Comparator和Comparable比较"></a><code>Comparator</code>和<code>Comparable</code>比较</h3><ul>
+<li><p>Comparable是排序接口；若一个类实现了Comparable接口，就意味着“该类支持排序”</p>
 </li>
-<li><p>验证主题是否启用</p>
-<p>执行上面上传部署至github的命令，刷新你的个人博客，就能看到你设置的主题是否启用。</p>
+<li><p>Comparator是比较器；我们若需要控制某个类的次序，可以建立一个“该类的比较器”来进行排序。</p>
 </li>
 </ul>
-<p>设置NexT主题和第三方服务</p>
-<p>安装完NexT之后，还是发现不够漂亮对不对，所以下面我们来慢慢地润色你的个人博客。</p>
+<p><strong>Comparable相当于“内部比较器”，而Comparator相当于“外部比较器”</strong></p>
 <ul>
-<li><p>选择样式</p>
-<p>NexT默认的样式其实也比较丑，幸好作者提供了一款十分漂亮的样式:<code>Mist</code>。启用<code>Mist</code>很简单，仅需在<code>主题配置文件</code>中将 <code>#scheme: Mist</code>前面的#注释去掉即可。</p>
+<li><p>实现<code>Comparable</code>接口要重写<code>compareTo</code>方法, 在<code>compareTo</code>方法里面实现比较</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Student</span> <span class="keyword">implements</span> <span class="title">Comparable</span> </span>&#123;</div><div class="line">   String name;</div><div class="line">   <span class="function"><span class="keyword">int</span> age</span></div><div class="line">   <span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compareTo</span><span class="params">(Student another)</span> &#123;</div><div class="line">        <span class="keyword">int</span> i = <span class="number">0</span>;</div><div class="line">        i = name.compareTo(another.name);</div><div class="line">        <span class="keyword">if</span>(i == <span class="number">0</span>) &#123;</div><div class="line">             <span class="keyword">return</span> age - another.age;</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">             <span class="keyword">return</span> i;</div><div class="line">        &#125;</div><div class="line">   &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这时我们可以直接用 Collections.sort( StudentList ) 对其排序了.(<strong>只需传入要排序的列表</strong>）</p>
 </li>
-<li><p>其它设置可参看<a href="http://theme-next.iissnan.com/getting-started.html#select-scheme" target="_blank" rel="external">这里</a></p>
-</li>
-</ul>
-<h3 id="发表博文"><a href="#发表博文" class="headerlink" title="发表博文"></a>发表博文</h3><ul>
-<li><p>新建博文</p>
-<p>我们可以使用命令新建一篇博文,使用<code>Git Shell</code>进入<code>Hexo</code>文件夹，输入以下命令：</p>
-<p><code>hexo new &quot;文章题目&quot;</code></p>
-<p>命令执行完后，就会发现在<code>blog/source/_posts</code>目录中多了一个文件博文名.md，这就是我们刚才新建的博文。</p>
-<p>此外，我们也可以直接进入<code>blog/source/_posts</code>目录中，右键新建一个文本文档，将名字改为博文名.md,这样也新建了一篇博文。</p>
-</li>
-<li><p>新建页面</p>
-<p>上面新建的博文是显示在单个文章界面，这里新建的页面是作为单个页面显示的，比如下图的分类、标签、归档，点击后都是显示为单个页面。</p>
-<p>你只需要记住新建博文是用上面的方法，新建页面是用这里的方法就行了，这里也采用命令新建页面：</p>
-<p><code>hexo new page &quot;页面名称&quot;</code></p>
-<p>命令执行完后，就会发现在在 Hexo\source 目录中多了一个文件夹，里面还有一个index.md,这就代表我们新建了一个页面。</p>
-</li>
-<li><p>写博文</p>
-<p>用文本编辑器打开上面新建的博文，如下图所示：</p>
+<li><p>实现<code>Comparator</code>需要重写<code>compare</code>方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Student</span></span>&#123;</div><div class="line"> String name;</div><div class="line"> <span class="keyword">int</span> age</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">StudentComparator</span> <span class="keyword">implements</span> <span class="title">Comparator</span> </span>&#123;</div><div class="line"> <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(Student one, Student another)</span> </span>&#123;</div><div class="line">      <span class="keyword">int</span> i = <span class="number">0</span>;</div><div class="line">      i = one.name.compareTo(another.name);</div><div class="line">      <span class="keyword">if</span>(i == <span class="number">0</span>) &#123;</div><div class="line">           <span class="keyword">return</span> one.age - another.age;</div><div class="line">      &#125; <span class="keyword">else</span> &#123;</div><div class="line">           <span class="keyword">return</span> i;          &#125;</div><div class="line"> &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Collections.sort( StudentList , new StudentComparator()) 可以对其排序（<strong>不仅要传入待排序的列表，还要传入实现了Comparator的类的对象</strong>）</p>
 </li>
 </ul>
-<p>  新建的页面略有不同，没有tags和categories标签。</p>
-<p>  三个”-“后面就是博文的正文内容，接下来就是正儿八经地撰写博文了。</p>
-<ul>
-<li><p>发博文</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">hexo clean</div><div class="line">hexo generate</div><div class="line">(若要本地预览就先执行 hexo server)</div><div class="line">hexo deploy</div></pre></td></tr></table></figure>
-<p>快捷命令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">hexo g == hexo generate</div><div class="line">hexo d == hexo deploy</div><div class="line">hexo s == hexo server</div><div class="line">hexo n == hexo new</div></pre></td></tr></table></figure>
-<p>还能组合使用，如：<code>hexo d -g</code></p>
-</li>
-</ul>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ol>
+<li>如果比较的方法只要用在一个类中，用该类实现Comparable接口就可以。</li>
+<li>如果比较的方法在很多类中需要用到，就自己写个类实现Comparator接口，这样当要比较的时候把实现了Comparator接口的类传过去就可以，省得重复造轮子。这也是为什么Comparator会在java.util包下的原因。<br>使用Comparator的优点是：1.与实体类分离 2.方便应对多变的排序规则</li>
+</ol>
 
       
     </div>
@@ -451,7 +392,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Hexo/" rel="tag">#Hexo</a>
+            <a href="/tags/Java/" rel="tag">#Java</a>
           
         </div>
       
@@ -460,12 +401,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2016/11/25/树的总结/" rel="next" title="Leetcode中的链表总结">
+                <i class="fa fa-chevron-left"></i> Leetcode中的链表总结
+              </a>
+            
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/11/23/中位数和顺序统计量（getKth）/" rel="prev" title="中位数和顺序统计量（getKth）">
-                中位数和顺序统计量（getKth） <i class="fa fa-chevron-right"></i>
+              <a href="/2016/11/30/Java常量池理解与总结/" rel="prev" title="Java常量池理解与总结">
+                Java常量池理解与总结 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -492,8 +437,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/10/22/github博客搭建/"
-           data-title="github博客搭建" data-url="http://yoursite.com/2016/10/22/github博客搭建/">
+      <div class="ds-thread" data-thread-key="2016/11/30/Java中Comparable和Comparator比较/"
+           data-title="Java中Comparable和Comparator比较" data-url="http://yoursite.com/2016/11/30/Java中Comparable和Comparator比较/">
       </div>
     
   </div>
@@ -584,7 +529,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#部署博客"><span class="nav-number">1.</span> <span class="nav-text">部署博客</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改主题（这采用的是Next主题）"><span class="nav-number">2.</span> <span class="nav-text">修改主题（这采用的是Next主题）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#发表博文"><span class="nav-number">3.</span> <span class="nav-text">发表博文</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Comparable-简介"><span class="nav-number">1.</span> <span class="nav-text">Comparable 简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Comparator-简介"><span class="nav-number">2.</span> <span class="nav-text">Comparator 简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Comparator和Comparable比较"><span class="nav-number">3.</span> <span class="nav-text">Comparator和Comparable比较</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
           </div>
         </section>

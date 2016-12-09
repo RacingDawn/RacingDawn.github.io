@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Hadoop," />
 
 
 
@@ -84,12 +84,31 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="RacingDawn's Blog">
-<meta property="og:url" content="http://yoursite.com/tags/getKth/index.html">
+<meta name="description" content="RPC（远程过程调用）原理
+RPC（Remote Procedure Call）：一个计算机通信协议，该协议允许运行于一台计算机的程序调用另一台计算机的子程序（也可以是同一台计算机的不同程序进程），而程序员无需额外地为这个交互作用编程
+RPC通过已入客户存根（Client Stub）和服务器骨架（Server Skeleton）以实现RPC具有与本地调用相应的形式
+
+
+Java远程方法调用（RMI">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hadoop远程过程调用">
+<meta property="og:url" content="http://yoursite.com/2016/12/08/Hadoop远程过程调用/index.html">
 <meta property="og:site_name" content="RacingDawn's Blog">
+<meta property="og:description" content="RPC（远程过程调用）原理
+RPC（Remote Procedure Call）：一个计算机通信协议，该协议允许运行于一台计算机的程序调用另一台计算机的子程序（也可以是同一台计算机的不同程序进程），而程序员无需额外地为这个交互作用编程
+RPC通过已入客户存根（Client Stub）和服务器骨架（Server Skeleton）以实现RPC具有与本地调用相应的形式
+
+
+Java远程方法调用（RMI">
+<meta property="og:updated_time" content="2016-12-08T03:30:45.238Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="RacingDawn's Blog">
+<meta name="twitter:title" content="Hadoop远程过程调用">
+<meta name="twitter:description" content="RPC（远程过程调用）原理
+RPC（Remote Procedure Call）：一个计算机通信协议，该协议允许运行于一台计算机的程序调用另一台计算机的子程序（也可以是同一台计算机的不同程序进程），而程序员无需额外地为这个交互作用编程
+RPC通过已入客户存根（Client Stub）和服务器骨架（Server Skeleton）以实现RPC具有与本地调用相应的形式
+
+
+Java远程方法调用（RMI">
 
 
 
@@ -110,10 +129,10 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/tags/getKth/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/12/08/Hadoop远程过程调用/"/>
 
 
-  <title> 标签: getKth | RacingDawn's Blog </title>
+  <title> Hadoop远程过程调用 | RacingDawn's Blog </title>
 </head>
 
 <body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
@@ -134,7 +153,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left  ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
@@ -214,46 +233,177 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-collapse">
-    <div class="collection-title">
-      <h2 >
-        getKth
-        <small>标签</small>
-      </h2>
-    </div>
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
 
     
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Hadoop远程过程调用
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-12-08T09:48:24+08:00" content="2016-12-08">
+              2016-12-08
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Hadoop/" itemprop="url" rel="index">
+                    <span itemprop="name">Hadoop</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/12/08/Hadoop远程过程调用/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/08/Hadoop远程过程调用/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/12/08/Hadoop远程过程调用/" class="leancloud_visitors" data-flag-title="Hadoop远程过程调用">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
       
 
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
-    <header class="post-header">
+      
+        <h3 id="RPC（远程过程调用）原理"><a href="#RPC（远程过程调用）原理" class="headerlink" title="RPC（远程过程调用）原理"></a>RPC（远程过程调用）原理</h3><ol>
+<li><p>RPC（Remote Procedure Call）：一个计算机通信协议，该协议允许运行于一台计算机的程序调用另一台计算机的子程序（也可以是同一台计算机的不同程序进程），而程序员无需额外地为这个交互作用编程</p>
+<p>RPC通过已入客户存根（Client Stub）和服务器骨架（Server Skeleton）以实现RPC具有与本地调用相应的形式</p>
+</li>
+</ol>
+<h3 id="Java远程方法调用（RMI）"><a href="#Java远程方法调用（RMI）" class="headerlink" title="Java远程方法调用（RMI）"></a>Java远程方法调用（RMI）</h3><ol>
+<li><p>RMI（Remote Method Invocation）：允许一个Java虚拟机上运行的Java程序调用不同虚拟机上（即使这两个虚拟机运行于物理隔离的不同主机上）运行的对象中的方法，RPC的Java升级版</p>
+<p>和RPC一样，RMI也有服务端程序和客户端程序，服务器程序创建多个远程对象，使这些对象能够被客户端引用，并等待客户端调用远程对象的方法，这就类似于RPC的服务器骨架</p>
+<p>而客户端则从服务器中获得一个至多个远程对象引用，然后调用位于服务器端的远程对象方法，类似于客户存根</p>
+</li>
+<li>远程对象：除了对象本身所在的虚拟机，其它虚拟机也可以调用此对象的方法</li>
+</ol>
+<h3 id="Java-NIO"><a href="#Java-NIO" class="headerlink" title="Java NIO"></a>Java NIO</h3><ol>
+<li>Java 基本套接字（socket）：其中ServerSocket的accept()、OutputStream的write()、InputStream的read()都是阻塞方法，因此不适用于处理上千个客户请求的服务器</li>
+<li>Java NIO（New Input/Output）：非阻塞，引入了选择器（selector）和通道（Channel）；选择器对通道进行轮询</li>
+</ol>
+<h3 id="IPC"><a href="#IPC" class="headerlink" title="IPC"></a>IPC</h3><p>Hadoop中的远程过程调用是通过Hadoop IPC构建简单的分布式系统，因为Hadoop需要保证有效的IPC（Inter-Process Communication）进程间通信，而Java RMI达不到这些需求</p>
 
-      <h1 class="post-title">
+      
+    </div>
+
+    <div>
+      
         
-            <a class="post-title-link" href="/2016/11/23/中位数和顺序统计量（getKth）/" itemprop="url">
-              
-                <span itemprop="name">中位数和顺序统计量（getKth）</span>
-              
-            </a>
+
+      
+    </div>
+
+    <div>
+      
         
-      </h1>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-11-23T10:18:24+08:00"
-              content="2016-11-23" >
-          11-23
-        </time>
-      </div>
+      
+    </div>
 
-    </header>
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Hadoop/" rel="tag">#Hadoop</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/12/06/序列化与压缩/" rel="next" title="序列化与压缩">
+                <i class="fa fa-chevron-left"></i> 序列化与压缩
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/12/08/Hadoop文件系统/" rel="prev" title="Hadoop文件系统">
+                Hadoop文件系统 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </article>
 
 
-    
-  </div>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -261,6 +411,14 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/12/08/Hadoop远程过程调用/"
+           data-title="Hadoop远程过程调用" data-url="http://yoursite.com/2016/12/08/Hadoop远程过程调用/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -280,8 +438,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -331,6 +498,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#RPC（远程过程调用）原理"><span class="nav-number">1.</span> <span class="nav-text">RPC（远程过程调用）原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java远程方法调用（RMI）"><span class="nav-number">2.</span> <span class="nav-text">Java远程方法调用（RMI）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java-NIO"><span class="nav-number">3.</span> <span class="nav-text">Java NIO</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IPC"><span class="nav-number">4.</span> <span class="nav-text">IPC</span></a></li></ol></div>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -427,6 +605,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
 
   
 
