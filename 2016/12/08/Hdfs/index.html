@@ -87,13 +87,10 @@
 <meta name="description" content="HDFS主要特性
 支持超大文件
 检测和快速应对硬件故障
-流式数据访问
-简化的一致性模型：一次写入、多次读取
-
-正是由于以上设计目标，HDFS并不适合：
-
-低延迟数据访问：HDFS高吞吐量牺牲了获取数据的延迟
-大量的小文件：这是因为HDFS将数据分布在数据节点（Datanode），并将文件的元数据（元数据指用来描述一个文件的特征的系统数据，诸如访问权限、文件拥有者以及文件数据）保存在名字节点（Nam">
+HDFS的容错：节点、网络、存储
+节点：NN与DN之间的心跳检测
+网络：无论何时发送数据，接收方都要以ACK来应答，否则说明网络有问题
+存储：数据在存储的时候会连同checksum（校验和）一起存储，DN会检测checksum，如果数据corruption，DN将只会提交正常的数据块信息给NN，则NN可根据之前的Block信息检测出错误">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hdfs概述">
 <meta property="og:url" content="http://yoursite.com/2016/12/08/Hdfs/index.html">
@@ -101,27 +98,21 @@
 <meta property="og:description" content="HDFS主要特性
 支持超大文件
 检测和快速应对硬件故障
-流式数据访问
-简化的一致性模型：一次写入、多次读取
-
-正是由于以上设计目标，HDFS并不适合：
-
-低延迟数据访问：HDFS高吞吐量牺牲了获取数据的延迟
-大量的小文件：这是因为HDFS将数据分布在数据节点（Datanode），并将文件的元数据（元数据指用来描述一个文件的特征的系统数据，诸如访问权限、文件拥有者以及文件数据）保存在名字节点（Nam">
+HDFS的容错：节点、网络、存储
+节点：NN与DN之间的心跳检测
+网络：无论何时发送数据，接收方都要以ACK来应答，否则说明网络有问题
+存储：数据在存储的时候会连同checksum（校验和）一起存储，DN会检测checksum，如果数据corruption，DN将只会提交正常的数据块信息给NN，则NN可根据之前的Block信息检测出错误">
 <meta property="og:image" content="http://yoursite.com/img/客户端读数据块数据时的缓冲区拷贝.png">
-<meta property="og:updated_time" content="2016-12-09T02:26:12.200Z">
+<meta property="og:updated_time" content="2016-12-09T03:25:10.805Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hdfs概述">
 <meta name="twitter:description" content="HDFS主要特性
 支持超大文件
 检测和快速应对硬件故障
-流式数据访问
-简化的一致性模型：一次写入、多次读取
-
-正是由于以上设计目标，HDFS并不适合：
-
-低延迟数据访问：HDFS高吞吐量牺牲了获取数据的延迟
-大量的小文件：这是因为HDFS将数据分布在数据节点（Datanode），并将文件的元数据（元数据指用来描述一个文件的特征的系统数据，诸如访问权限、文件拥有者以及文件数据）保存在名字节点（Nam">
+HDFS的容错：节点、网络、存储
+节点：NN与DN之间的心跳检测
+网络：无论何时发送数据，接收方都要以ACK来应答，否则说明网络有问题
+存储：数据在存储的时候会连同checksum（校验和）一起存储，DN会检测checksum，如果数据corruption，DN将只会提交正常的数据块信息给NN，则NN可根据之前的Block信息检测出错误">
 <meta name="twitter:image" content="http://yoursite.com/img/客户端读数据块数据时的缓冲区拷贝.png">
 
 
@@ -345,7 +336,15 @@
       
         <h3 id="HDFS主要特性"><a href="#HDFS主要特性" class="headerlink" title="HDFS主要特性"></a>HDFS主要特性</h3><ol>
 <li>支持超大文件</li>
-<li>检测和快速应对硬件故障</li>
+<li>检测和快速应对硬件故障<ul>
+<li>HDFS的容错：节点、网络、存储<ul>
+<li>节点：NN与DN之间的心跳检测</li>
+<li>网络：无论何时发送数据，接收方都要以ACK来应答，否则说明网络有问题</li>
+<li>存储：数据在存储的时候会连同checksum（校验和）一起存储，DN会检测checksum，如果数据corruption，DN将只会提交正常的数据块信息给NN，则NN可根据之前的Block信息检测出错误</li>
+</ul>
+</li>
+</ul>
+</li>
 <li>流式数据访问</li>
 <li>简化的一致性模型：一次写入、多次读取</li>
 </ol>
@@ -378,21 +377,34 @@
 </ul>
 <p>同时通过Namenode还能了解到数据块所在的<strong>数据节点的信息</strong>，但这些并不保存在Namenode的本地文件系统中（也就是上面提到的两种形式），Namenode每次启动时，都会动态地重建这些信息，这些信息构成了Namenode的第二关系</p>
 <p>Namenode还能获取HDFS整体运行状态的一些信息，如系统的可用空间、已经使用空间、各数据节点当前状态</p>
+<p><strong>两个重要关系：</strong></p>
+<ul>
+<li>HDFS文件系统的文件目录树，以及文件的数据块索引，即每个文件对应的数据块列表</li>
+<li>数据块和数据节点的对应关系，即某一数据块保存在哪些数据节点的信息</li>
+</ul>
 </li>
 <li><p>Secondary Namenode：<strong>定期合并命名空间镜像和镜像编辑日志</strong>的辅助守护进程</p>
 <p>区别于Namenode，它不接收或记录HDFS的任何实时变化，而只是根据设定的时间间隔，定期合并命名空间镜像和镜像编辑日志，并把新镜像上传到Namenode，替换原有的，并清空日志（实质上为Namenode的第一关系提供了一个简单的检查点checkpoint机制，避免编辑日志过大）</p>
 </li>
 </ul>
 </li>
-<li>数据节点<br>数据节点是一个I/O密集型Java应用，为了充分利用Java NIO带来的性能提升，BlockSender支持两种数据发送方式：普通方式和NIO方式<ul>
-<li>普通方式：基于Java流的API，实现数据节点“数据流”流式接口<br>执行操作：<ul>
-<li>从磁盘中读取数据出来，至应用程序，应用程序再将数据发送到客户端的套接字上<br><img src="/img/客户端读数据块数据时的缓冲区拷贝.png" alt="客户端读数据块数据时的缓冲区拷贝"></li>
+<li><p>数据节点<br>数据节点是一个I/O密集型Java应用，为了充分利用Java NIO带来的性能提升，BlockSender支持两种数据发送方式：普通方式和NIO方式</p>
+<p><img src="/img/客户端读数据块数据时的缓冲区拷贝.png" alt="客户端读数据块数据时的缓冲区拷贝"></p>
+<ul>
+<li><p>普通方式：基于Java流的API，实现数据节点“数据流”流式接口</p>
+<p>执行操作：</p>
+<ul>
+<li>从磁盘中读取数据出来，至应用程序，应用程序再将数据发送到客户端的套接字上</li>
+<li>如上图左：将数据从磁盘中读入到内核缓冲区（步骤1，用户模式到内核模式的切换）、然后从内核缓冲区拷贝到用户缓冲区（步骤2，内核模式到用户模式的切换）、接着又从用户缓冲区拷贝至内核缓冲区（步骤3，用户模式到内核模式的切换）、最后再写到网卡缓冲区中（步骤4，内核模式到用户模式的切换）</li>
 </ul>
 </li>
-<li>NIO方式：利用了Java NIO中的transferTo()方法，以<strong>零拷贝</strong>的数据传输高效地实现了相同的接口</li>
+<li><p>NIO方式：利用了Java NIO中的transferTo()方法，以<strong>零拷贝</strong>的数据传输高效地实现了相同的接口，TransferTo()方法用于直接将字节从它被调用的通道上传输至另外一个可写字节通道上，数据无需经过应用程序，缺点：数据节点失去了在客户端读取数据的过程中对数据进行校验的能力</p>
+<p>对于支持收集操作的网络接口，不要求待传输的数据连续存储，数据可以分散在不同的位置上，也就不需要将从文件中读出的数据拷贝到Socker缓冲区中，只需将缓冲区描述符传递到网络协议栈中去</p>
+</li>
 </ul>
 </li>
-<li>客户端</li>
+<li><p>客户端</p>
+</li>
 </ol>
 
       
@@ -432,6 +444,10 @@
           </div>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/12/09/初识Spark/" rel="prev" title="初识Spark">
+                初识Spark <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -503,7 +519,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">10</span>
+              <span class="site-state-item-count">11</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -511,7 +527,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -520,7 +536,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
