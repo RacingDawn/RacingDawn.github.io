@@ -1,0 +1,825 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Leetcode," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="冒泡排序两两比较相邻记录，如果反序则交换。即将每次比较的最大值下沉；时间复杂度：O(n^2)
+1234567891011121314public void bubbleSort (int[] nums) &amp;#123;  boolean needNextPass = true;  for (int i = 1; i &amp;lt; nums.length &amp;amp;&amp;amp; needNextPass;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="排序总结">
+<meta property="og:url" content="http://yoursite.com/2016/12/20/排序总结/index.html">
+<meta property="og:site_name" content="RacingDawn's Blog">
+<meta property="og:description" content="冒泡排序两两比较相邻记录，如果反序则交换。即将每次比较的最大值下沉；时间复杂度：O(n^2)
+1234567891011121314public void bubbleSort (int[] nums) &amp;#123;  boolean needNextPass = true;  for (int i = 1; i &amp;lt; nums.length &amp;amp;&amp;amp; needNextPass;">
+<meta property="og:image" content="http://yoursite.com/img/希尔排序步长选择.png">
+<meta property="og:updated_time" content="2017-03-07T09:13:24.055Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="排序总结">
+<meta name="twitter:description" content="冒泡排序两两比较相邻记录，如果反序则交换。即将每次比较的最大值下沉；时间复杂度：O(n^2)
+1234567891011121314public void bubbleSort (int[] nums) &amp;#123;  boolean needNextPass = true;  for (int i = 1; i &amp;lt; nums.length &amp;amp;&amp;amp; needNextPass;">
+<meta name="twitter:image" content="http://yoursite.com/img/希尔排序步长选择.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/12/20/排序总结/"/>
+
+
+  <title> 排序总结 | RacingDawn's Blog </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">RacingDawn's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                排序总结
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-12-20T10:18:24+08:00" content="2016-12-20">
+              2016-12-20
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Algorithm/" itemprop="url" rel="index">
+                    <span itemprop="name">Algorithm</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/12/20/排序总结/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/20/排序总结/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/12/20/排序总结/" class="leancloud_visitors" data-flag-title="排序总结">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <ol>
+<li><p>冒泡排序<br><strong>两两比较</strong>相邻记录，如果反序则交换。即将每次比较的最大值下沉；时间复杂度：O(n^2)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">bubbleSort</span> <span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</div><div class="line">  <span class="keyword">boolean</span> needNextPass = <span class="keyword">true</span>;</div><div class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; nums.length &amp;&amp; needNextPass; i++) &#123;</div><div class="line">    needNextPass = <span class="keyword">false</span>; <span class="comment">//添加needNextPass，如果下次不要遍历了，说明已经排好序了</span></div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; nums.length - i; j++) &#123;</div><div class="line">      <span class="keyword">if</span> (nums[j] &gt; nums[j + <span class="number">1</span>]) &#123;</div><div class="line">          needNextPass = <span class="keyword">true</span>;</div><div class="line">          <span class="keyword">int</span> tmp = nums[j + <span class="number">1</span>];</div><div class="line">          nums[j + <span class="number">1</span>] = nums[j];</div><div class="line">          nums[j] = tmp;</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>选择排序<br>在未排序的数组中<strong>找出最小的数</strong>，然后将其放在第一个位置；接着找次小的，放在第二个位置；依次类推。即将最小值上浮；时间复杂度：O(n^2)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">selectSort</span> <span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</div><div class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length - <span class="number">1</span>; i++) &#123;</div><div class="line">    <span class="keyword">int</span> min = i;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = i + <span class="number">1</span>; j &lt; nums.length; j++) &#123;      </div><div class="line">      <span class="keyword">if</span> (nums[min] &gt; nums[j]) &#123;</div><div class="line">          min = j;</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> (min != i) &#123;</div><div class="line">      <span class="keyword">int</span> tmp = nums[min];</div><div class="line">      nums[min] = nums[i];</div><div class="line">      nums[i] = tmp;      </div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>插入排序<br>构建有序序列，对于未排序的数，在已排序序列中从后向前扫描，找到相应位置插入；时间复杂度O(n^2)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">insertSort</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</div><div class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; nums.length; i++) &#123;</div><div class="line">      <span class="keyword">for</span> (<span class="keyword">int</span> j = i; j &gt; <span class="number">0</span>; j--) &#123;</div><div class="line">          <span class="keyword">if</span> (nums[j - <span class="number">1</span>] &gt; nums[j]) &#123;</div><div class="line">            <span class="keyword">int</span> tmp = nums[j];</div><div class="line">            nums[j] = nums[j - <span class="number">1</span>];</div><div class="line">            nums[j - <span class="number">1</span>] = tmp;</div><div class="line">          &#125;</div><div class="line">      &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>希尔排序<br>减量递增排序，是插入排序的一种快速算法（之所以会比插入排序快，是因为它可以跳着移动数据，而插入只能相邻的移动）插入排序相当于h=1的情况；希尔排序则是使数组中任意间隔为h的元素都是有序的<br><strong>关键在于步长的选择</strong><br><img src="/img/希尔排序步长选择.png" alt="希尔排序步长选择"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">hillSort</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</div><div class="line">  <span class="keyword">int</span> gap = nums.length / <span class="number">2</span>;</div><div class="line">  <span class="keyword">while</span> (gap != <span class="number">0</span>)&#123;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = gap; i &lt; nums.length; i++) &#123;  <span class="comment">//将第i个数与i-h，i-2h...比较</span></div><div class="line">      <span class="keyword">for</span> (<span class="keyword">int</span> j = i; j &gt; gap; j = j - gap) &#123;          </div><div class="line">          <span class="keyword">if</span> (nums[j] &lt; nums[j - gap]) &#123;</div><div class="line">            <span class="keyword">int</span> tmp = nums[j];</div><div class="line">            nums[j] = nums[j - gap];</div><div class="line">            nums[j - gap] = tmp;</div><div class="line">          &#125;          </div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">    gap /= <span class="number">2</span>;</div><div class="line">  &#125;   </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>归并排序<br>分治的思想：分区再归并，归并时用的插入排序，（缺点：需要一个长度为N的额外数组)，时间复杂度为O(nlog n)<br>自顶向下：先将数组分成一个个长度为1的数组，然后再依次归并。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">int</span>[] mergeSort(<span class="keyword">int</span>[] nums) &#123;</div><div class="line">  <span class="keyword">if</span> (nums == <span class="keyword">null</span> || nums.length == <span class="number">0</span>) &#123;</div><div class="line">    <span class="keyword">return</span> nums;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">int</span>[] copy = <span class="keyword">new</span> <span class="keyword">int</span>[nums.length];</div><div class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; i++) &#123;</div><div class="line">    copy[i] = nums[i];</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> partition(nums, copy, <span class="number">0</span> , nums.length - <span class="number">1</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="keyword">int</span>[] partition(<span class="keyword">int</span>[] nums,</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">int</span> mid = start + (end - start) / <span class="number">2</span>;</div><div class="line">  partition(copy, nums, start , mid);</div><div class="line">  partition(copy, nums, mid + <span class="number">1</span> , end);</div><div class="line">  <span class="keyword">return</span> merge(nums, copy, start, mid, end);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="keyword">int</span>[] merge(<span class="keyword">int</span>[] nums, <span class="keyword">int</span>[] copy, <span class="keyword">int</span> start, <span class="keyword">int</span> mid, <span class="keyword">int</span> end) &#123;</div><div class="line">  <span class="keyword">int</span> i = start;</div><div class="line">  <span class="keyword">int</span> j = mid + <span class="number">1</span>;</div><div class="line">  <span class="keyword">int</span> k = start;</div><div class="line">  <span class="keyword">while</span> (i &lt;= mid &amp;&amp; j &lt;= end) &#123;</div><div class="line">    <span class="keyword">if</span> (nums[i] &lt; nums[j]) &#123;</div><div class="line">      copy[k++] = nums[i++];</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">      copy[k++] = nums[j++];</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">while</span> (i &lt;= mid) &#123;</div><div class="line">    copy[k++] = nums[i++];</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">while</span> (j &lt;= end) &#123;</div><div class="line">    copy[k++] = nums[j++];</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> copy;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>自底向上：对原数组进行子数组长度为1，2，4……的归并<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">mergeSort</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</div><div class="line">  <span class="keyword">if</span> (nums == <span class="keyword">null</span> || nums.length == <span class="number">0</span>) &#123;</div><div class="line">    <span class="keyword">return</span>;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">int</span>[] copy = <span class="keyword">new</span> <span class="keyword">int</span>[nums.length];</div><div class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; i++) &#123;</div><div class="line">    copy[i] = nums[i];</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> step = <span class="number">1</span>; step &lt; nums.length; step = step + step) &#123; <span class="comment">//子数组的大小</span></div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> start = <span class="number">0</span>; start &lt; nums.length - step; start += step + step) &#123; <span class="comment">//子数组的起始索引  </span></div><div class="line">      <span class="keyword">int</span> left = start;</div><div class="line">      <span class="keyword">int</span> right = start + step;</div><div class="line">      <span class="keyword">int</span> end = Math.min(start + step + step - <span class="number">1</span>, nums.length - <span class="number">1</span>);</div><div class="line">      <span class="keyword">int</span> index = start;</div><div class="line">      <span class="keyword">while</span> (left &lt; start + step &amp;&amp; right &lt;= end) &#123;</div><div class="line">        <span class="keyword">if</span> (nums[left] &lt; nums[right]) &#123;</div><div class="line">          copy[index++] = nums[left++];</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">          copy[index++] = nums[right++];</div><div class="line">        &#125;</div><div class="line">      &#125;</div><div class="line">      <span class="keyword">while</span> (left &lt; start + step) &#123;</div><div class="line">        copy[index++] = nums[left++];</div><div class="line">      &#125;</div><div class="line">      <span class="keyword">while</span> (right &lt;= end) &#123;</div><div class="line">        copy[index++] = nums[right++];</div><div class="line">      &#125;</div><div class="line">      <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; i++) &#123; <span class="comment">//将复制数组中的数copy到原数组中</span></div><div class="line">        nums[i] = copy[i];</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<ol>
+<li>快速排序<br>分治的思想，选择一个pivot，将数组分成两份，一份小于pivot，另一份大于pivot，然后再对前后半段做类似的处理，时间复杂度为O(nlog n)<blockquote>
+<p>pivot的选择：三取样取中位数切分；对于有大量重复元素的数组，使用三向切分</p>
+</blockquote>
+</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">quickSort</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</div><div class="line">  <span class="keyword">if</span> (nums == <span class="keyword">null</span>) &#123;</div><div class="line">    <span class="keyword">return</span>;</div><div class="line">  &#125;</div><div class="line">  sort(nums, <span class="number">0</span>, nums.length - <span class="number">1</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sort</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> start, <span class="keyword">int</span> end)</span> </span>&#123;</div><div class="line">  <span class="keyword">if</span> (start &gt;= end) &#123; <span class="comment">//需要大于等于，只等于的话会出现left+1&gt;end，数组越界</span></div><div class="line">    <span class="keyword">return</span>;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">int</span> left = start;</div><div class="line">  <span class="keyword">int</span> right = end;</div><div class="line">  <span class="keyword">int</span> pivot = nums[end];</div><div class="line">  <span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</div><div class="line">    <span class="keyword">while</span> (left &lt; right &amp;&amp; nums[left] &lt; pivot) &#123;</div><div class="line">      left++;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">while</span> (left &lt; right &amp;&amp; nums[right] &gt;= pivot) &#123;</div><div class="line">      right--;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> (left &lt; right) &#123;</div><div class="line">      swap(nums, left, right);</div><div class="line">    &#125; <span class="keyword">else</span> <span class="keyword">break</span>;</div><div class="line">  &#125;</div><div class="line">  swap(nums, left, end);</div><div class="line">  sort(nums, start, left - <span class="number">1</span>);</div><div class="line">  sort(nums, left + <span class="number">1</span>, end);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">swap</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> i, <span class="keyword">int</span> j)</span> </span>&#123;</div><div class="line">  <span class="keyword">int</span> tmp = nums[i];</div><div class="line">  nums[i] = nums[j];</div><div class="line">  nums[j] = tmp;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ol>
+<li>堆排序</li>
+</ol>
+<ul>
+<li>堆排序：使用的是二叉堆，是一棵完全二叉树。<ul>
+<li>堆（heap）：具有以下属性的二叉树。<ul>
+<li>一棵完全二叉树（除了最后一层没填满以及最后一层的叶子都是偏左放置的，其余每一层都是满的）</li>
+<li>每个结点大于或等于它的任意一个孩子</li>
+</ul>
+</li>
+<li>对堆的一些操作：<ul>
+<li>完全二叉树（用数组存储时）的特点：对于位置i处的结点，它的左孩子在位置2<em>i+1处,它的右孩子在位置2</em>i+2处，父亲结点在位置（i-1）/2处</li>
+<li>添加一个新的结点：先将该结点添加至堆的末尾，然后比较它与其父结点的大小，若它大，则交换它与父结点的位置</li>
+<li>删除根结点：将根结点删除后，用最后一个结点替代根结点，然后依次将该根结点与子结点比较，将较大的子结点与该结点交换位置</li>
+</ul>
+</li>
+<li>上浮：由下至上的堆的有序化</li>
+<li>下沉：由上至下的堆的有序化<blockquote>
+<p>Heap类的实现，应用泛型，实现添加新结点、删除根结点的功能。<br>ArrayList.set(index,object);将index的元素替换为object</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> &lt;E extends Comparable&gt; <span class="function"><span class="keyword">void</span> <span class="title">heapSort</span><span class="params">(E[] nums)</span> </span>&#123;</div><div class="line">    Heap heap = <span class="keyword">new</span> Heap(nums);</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; i++) &#123;</div><div class="line">      nums[i] = heap.remove();</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Heap</span>&lt;<span class="title">E</span> <span class="keyword">extends</span> <span class="title">Comparable</span>&gt; </span>&#123;</div><div class="line">  ArrayList&lt;E&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="title">Heap</span><span class="params">(E[] nums)</span> </span>&#123;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; i++) &#123;</div><div class="line">      add(nums[i]);</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">add</span><span class="params">(E num)</span> </span>&#123;</div><div class="line">    list.add(num);</div><div class="line">    <span class="keyword">int</span> index = list.size() - <span class="number">1</span>;</div><div class="line">    <span class="keyword">while</span> (index &gt; <span class="number">0</span> &amp;&amp; list.get((index - <span class="number">1</span>) / <span class="number">2</span>).compareTo(list.get(index)) &lt; <span class="number">0</span>) &#123;</div><div class="line">      <span class="keyword">int</span> tmp = list.get(index);</div><div class="line">      list.set(index, list.get((index - <span class="number">1</span>) / <span class="number">2</span>));</div><div class="line">      list.set((index - <span class="number">1</span>) / <span class="number">2</span>, tmp);</div><div class="line">      index = (index - <span class="number">1</span>) / <span class="number">2</span>;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">private</span> E <span class="title">remove</span><span class="params">()</span> </span>&#123;</div><div class="line">    E max = list.get(<span class="number">0</span>);</div><div class="line">    E last = list.get(list.size() - <span class="number">1</span>); <span class="comment">//先get再删除否则当list长度为1时，后续的set会出错</span></div><div class="line">    list.set(<span class="number">0</span>, last);</div><div class="line">    list.remove(list.size() - <span class="number">1</span>);</div><div class="line">    list.set(<span class="number">0</span>, list.removeLast());</div><div class="line">    <span class="keyword">int</span> index = <span class="number">0</span>;</div><div class="line">    <span class="keyword">while</span> (index &lt; list.size()) &#123;</div><div class="line">      <span class="keyword">int</span> leftIndex = <span class="number">2</span>*index + <span class="number">1</span>;</div><div class="line">      <span class="keyword">int</span> rightIndex = <span class="number">2</span>*index + <span class="number">2</span>;</div><div class="line">      <span class="keyword">int</span> swapIndex = leftIndex;</div><div class="line">      <span class="keyword">if</span> (list.get(leftIndex).compareTo(list.get(rightIndex) &lt; <span class="number">0</span>) &#123;</div><div class="line">        swapIndex = rightIndex;</div><div class="line">      &#125;</div><div class="line">      <span class="keyword">if</span> (list.get(index).compareTo(list.get(swapIndex)) &lt; <span class="number">0</span>) &#123;</div><div class="line">        <span class="keyword">int</span> tmp = list.get(index);</div><div class="line">        list.set(index, list.get(swapIndex);</div><div class="line">        list.set(swapIndex, tmp);</div><div class="line">        index = swapIndex;</div><div class="line">      &#125;      </div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> max;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>java中的优先队列即为最小堆</p>
+</blockquote>
+<ul>
+<li><p>堆的构造可通过下列代码来构造:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> (<span class="keyword">int</span> k = n / <span class="number">2</span>; k &gt; <span class="number">0</span>; k--) &#123;</div><div class="line">  sink(k, n)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>索引优先队列IndexPrirotyQueue</p>
+<ul>
+<li>insert(int k, Item item)：插入一个元素，将它和索引k相关联</li>
+<li>change(int k, Item item)：将索引为k的元素设为item</li>
+<li>contains(int k)：是否存在索引为k的元素</li>
+</ul>
+</li>
+</ul>
+<ol>
+<li>计数排序<br>对于每个输入元素，确定小于x的元素个数，然后利用这个信息将x放在数组的对应位置，不是比较排序，时间复杂度为O(n+k)，k为max-min+1</li>
+</ol>
+<ul>
+<li>找出待排序的数组中最大和最小的元素；</li>
+<li>统计数组中每个值为i的元素出现的次数，存入数组C的第i项；</li>
+<li>对所有的计数累加（从C中的第一个元素开始，每一项和前一项相加）；</li>
+<li>反向填充目标数组：将每个元素i放在新数组的第C(i)项，每放一个元素就将C(i)减去1。<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span>[] countSort(<span class="keyword">int</span>[] nums) &#123;</div><div class="line">  <span class="keyword">if</span> (nums == <span class="keyword">null</span> || nums.length == <span class="number">0</span>) &#123;</div><div class="line">      <span class="keyword">return</span> nums;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">int</span> max = nums[<span class="number">0</span>];</div><div class="line">  <span class="keyword">int</span> min = nums[<span class="number">0</span>];</div><div class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; i++) &#123;</div><div class="line">      <span class="keyword">if</span> (nums[i] &gt; max) &#123;</div><div class="line">          max = nums[i];</div><div class="line">      &#125;</div><div class="line">      <span class="keyword">if</span> (nums[i] &lt; min) &#123;</div><div class="line">          min = nums[i];</div><div class="line">      &#125;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">int</span>[] countArray = <span class="keyword">new</span> <span class="keyword">int</span>[max - min + <span class="number">1</span>];</div><div class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; i++) &#123;</div><div class="line">      countArray[nums[i] - min]++;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; countArray.length; i++) &#123;</div><div class="line">      countArray[i] += countArray[i - <span class="number">1</span>];</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">int</span>[] result = <span class="keyword">new</span> <span class="keyword">int</span>[nums.length];</div><div class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = nums.length - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123; <span class="comment">//可保证具有相同值的元素在输出数组中的相对次序与它们在输入数组中的相对次序是相同的</span></div><div class="line">      result[--countArray[nums[i] - min]] = nums[i];</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> result;          </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<ol>
+<li>基数排序<br>将整数按位数切割成不同的数字，然后按每个位数分别比较。</li>
+</ol>
+<ul>
+<li>将所有待比较数值从最低位开始，依次进行一次排序，然后排序的结果重新赋给nums，依次进行到高位，数列就变成了一个有序序列。<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">radixSort</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</div><div class="line">  <span class="keyword">if</span> (nums == <span class="keyword">null</span> || nums.length == <span class="number">0</span>) &#123;</div><div class="line">      <span class="keyword">return</span>;</div><div class="line">  &#125;</div><div class="line">  <span class="comment">/*确定数组中数的最大长度*/</span></div><div class="line">  <span class="keyword">int</span> cnt = <span class="number">0</span>;</div><div class="line">  <span class="keyword">int</span> max = nums[<span class="number">0</span>];</div><div class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; nums.length; i++) &#123;</div><div class="line">      <span class="keyword">if</span> (max &lt; nums[i]) &#123;</div><div class="line">          max = nums[i];</div><div class="line">      &#125;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">while</span> (max != <span class="number">0</span>) &#123;</div><div class="line">      cnt++;</div><div class="line">      max /= <span class="number">10</span>;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">int</span>[][] tmp = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">10</span>][nums.length];</div><div class="line">  <span class="keyword">int</span>[] count = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">10</span>]; <span class="comment">//每个基数数组存储数的个数</span></div><div class="line">  <span class="keyword">int</span> multiple = <span class="number">1</span>;</div><div class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; cnt; i++) &#123;</div><div class="line">      <span class="keyword">int</span> index = <span class="number">0</span>;</div><div class="line">      <span class="keyword">for</span> (<span class="keyword">int</span> num : nums) &#123;</div><div class="line">          <span class="keyword">int</span> lsd = num / multiple % <span class="number">10</span>;</div><div class="line">          tmp[lsd][count[lsd]++] = num;  <span class="comment">//基数相同的数，就放在同一行中，然后count[lad]++</span></div><div class="line">      &#125;</div><div class="line">      <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">10</span>; j++) &#123;</div><div class="line">          <span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">0</span>; k &lt; count[j]; k++) &#123;</div><div class="line">              nums[index++] = tmp[j][k];</div><div class="line">          &#125;</div><div class="line">          count[j] = <span class="number">0</span>; <span class="comment">//进行下一位比较前，需要将count重置为0</span></div><div class="line">      &#125;</div><div class="line">      multiple *= <span class="number">10</span>;</div><div class="line">  &#125;          </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Leetcode/" rel="tag">#Leetcode</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/12/19/Spark作业执行情况/" rel="next" title="Spark作业执行情况">
+                <i class="fa fa-chevron-left"></i> Spark作业执行情况
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/12/21/带缓冲IO与不带缓冲IO的区别与联系/" rel="prev" title="带缓冲I/O和不带缓冲I/O的区别与联系">
+                带缓冲I/O和不带缓冲I/O的区别与联系 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/12/20/排序总结/"
+           data-title="排序总结" data-url="http://yoursite.com/2016/12/20/排序总结/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="RacingDawn" />
+          <p class="site-author-name" itemprop="name">RacingDawn</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">15</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">RacingDawn</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"racingdawn"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("lycOgRgz3PeJigkxA1l9HqdC-gzGzoHsz", "S3JkSDCncyyD4JHrIPFBpuj7");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+
+</body>
+</html>

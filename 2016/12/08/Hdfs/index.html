@@ -103,7 +103,7 @@ HDFS的容错：节点、网络、存储
 网络：无论何时发送数据，接收方都要以ACK来应答，否则说明网络有问题
 存储：数据在存储的时候会连同checksum（校验和）一起存储，DN会检测checksum，如果数据corruption，DN将只会提交正常的数据块信息给NN，则NN可根据之前的Block信息检测出错误">
 <meta property="og:image" content="http://yoursite.com/img/客户端读数据块数据时的缓冲区拷贝.png">
-<meta property="og:updated_time" content="2016-12-09T03:25:10.805Z">
+<meta property="og:updated_time" content="2016-12-13T12:58:43.634Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hdfs概述">
 <meta name="twitter:description" content="HDFS主要特性
@@ -373,7 +373,7 @@ HDFS的容错：节点、网络、存储
 <li><p>Namenode：维护着整个文件系统的文件目录树，文件/目录的元信息和文件数据块索引；这些信息（第一关系）以两种形式存储在本地文件系统中：</p>
 <ul>
 <li>命名空间镜像（FSImage，也称文件系统镜像）：保存着某一特定时刻HDFS的目录树、文件的元信息和数据块索引等信息</li>
-<li>命名空间镜像的编辑日志（Edit Log）：保存着后序对HDFS的目录树、文件的元信息和数据块索引等信息的改动</li>
+<li>命名空间镜像的编辑日志（Edit Log）：保存着后续对HDFS的目录树、文件的元信息和数据块索引等信息的改动</li>
 </ul>
 <p>同时通过Namenode还能了解到数据块所在的<strong>数据节点的信息</strong>，但这些并不保存在Namenode的本地文件系统中（也就是上面提到的两种形式），Namenode每次启动时，都会动态地重建这些信息，这些信息构成了Namenode的第二关系</p>
 <p>Namenode还能获取HDFS整体运行状态的一些信息，如系统的可用空间、已经使用空间、各数据节点当前状态</p>
@@ -399,7 +399,7 @@ HDFS的容错：节点、网络、存储
 </ul>
 </li>
 <li><p>NIO方式：利用了Java NIO中的transferTo()方法，以<strong>零拷贝</strong>的数据传输高效地实现了相同的接口，TransferTo()方法用于直接将字节从它被调用的通道上传输至另外一个可写字节通道上，数据无需经过应用程序，缺点：数据节点失去了在客户端读取数据的过程中对数据进行校验的能力</p>
-<p>对于支持收集操作的网络接口，不要求待传输的数据连续存储，数据可以分散在不同的位置上，也就不需要将从文件中读出的数据拷贝到Socker缓冲区中，只需将缓冲区描述符传递到网络协议栈中去</p>
+<p>对于支持收集操作的网络接口，不要求待传输的数据连续存储，数据可以分散在不同的位置上，也就不需要将从文件中读出的数据拷贝到Socket缓冲区中，只需将缓冲区描述符传递到网络协议栈中去</p>
 </li>
 </ul>
 </li>
@@ -444,6 +444,10 @@ HDFS的容错：节点、网络、存储
           </div>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/12/09/初识Spark/" rel="prev" title="初识Spark">
+                初识Spark <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -515,7 +519,7 @@ HDFS的容错：节点、网络、存储
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">10</span>
+              <span class="site-state-item-count">15</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -523,7 +527,7 @@ HDFS的容错：节点、网络、存储
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -532,7 +536,7 @@ HDFS的容错：节点、网络、存储
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -580,7 +584,7 @@ HDFS的容错：节点、网络、存储
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2016</span>
+  <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

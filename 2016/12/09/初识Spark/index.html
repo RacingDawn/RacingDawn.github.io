@@ -1,0 +1,827 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Spark," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="Spark之于HadoopSpark是一个计算框架，Hadoop包含计算框架MapReduce和分布式文件系统HDFS，Spark是MapReduce的替代方案，其优势体现在：
+
+中间结果的输出基于MapReduce的计算引擎通常会将中间结果输出到磁盘上，进行存储和容错。而当一些查询翻译到MapReduce任务时，往往会产生多个Stage，这些串联的Stage又依赖于底层文件系统来存储每一个Sta">
+<meta property="og:type" content="article">
+<meta property="og:title" content="初识Spark">
+<meta property="og:url" content="http://yoursite.com/2016/12/09/初识Spark/index.html">
+<meta property="og:site_name" content="RacingDawn's Blog">
+<meta property="og:description" content="Spark之于HadoopSpark是一个计算框架，Hadoop包含计算框架MapReduce和分布式文件系统HDFS，Spark是MapReduce的替代方案，其优势体现在：
+
+中间结果的输出基于MapReduce的计算引擎通常会将中间结果输出到磁盘上，进行存储和容错。而当一些查询翻译到MapReduce任务时，往往会产生多个Stage，这些串联的Stage又依赖于底层文件系统来存储每一个Sta">
+<meta property="og:image" content="http://yoursite.com/img/Spark 架构图.png">
+<meta property="og:image" content="http://yoursite.com/img/部署图.png">
+<meta property="og:image" content="http://yoursite.com/img/并行度过低.png">
+<meta property="og:updated_time" content="2017-01-18T13:35:40.498Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="初识Spark">
+<meta name="twitter:description" content="Spark之于HadoopSpark是一个计算框架，Hadoop包含计算框架MapReduce和分布式文件系统HDFS，Spark是MapReduce的替代方案，其优势体现在：
+
+中间结果的输出基于MapReduce的计算引擎通常会将中间结果输出到磁盘上，进行存储和容错。而当一些查询翻译到MapReduce任务时，往往会产生多个Stage，这些串联的Stage又依赖于底层文件系统来存储每一个Sta">
+<meta name="twitter:image" content="http://yoursite.com/img/Spark 架构图.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/12/09/初识Spark/"/>
+
+
+  <title> 初识Spark | RacingDawn's Blog </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">RacingDawn's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                初识Spark
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-12-09T16:21:10+08:00" content="2016-12-09">
+              2016-12-09
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Spark/" itemprop="url" rel="index">
+                    <span itemprop="name">Spark</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/12/09/初识Spark/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/09/初识Spark/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/12/09/初识Spark/" class="leancloud_visitors" data-flag-title="初识Spark">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="Spark之于Hadoop"><a href="#Spark之于Hadoop" class="headerlink" title="Spark之于Hadoop"></a>Spark之于Hadoop</h3><p>Spark是一个计算框架，Hadoop包含计算框架MapReduce和分布式文件系统HDFS，Spark是MapReduce的替代方案，其优势体现在：</p>
+<ul>
+<li><p>中间结果的输出<br>基于MapReduce的计算引擎通常会将中间结果输出到磁盘上，进行存储和容错。而当一些查询翻译到MapReduce任务时，往往会产生多个Stage，这些串联的Stage又依赖于底层文件系统来存储每一个Stage的输出结果</p>
+<p>对于Spark，它是将执行模型抽象为通用的有向无环图执行计划（DAG），这可以将多Stage的任务串联或者并行执行，而无需将Stage的中间结果输出到HDFS中</p>
+</li>
+<li><p>数据格式和内存布局<br>MapReduce的Schema on Read处理方式会引起较大的处理开销，而Spark抽象出分布式内存存储结构弹性分布式数据集RDD，进行数据的存储</p>
+<p>RDD可以支持粗粒度写操作，但对于读取操作，RDD可以精确到每条记录，这使得RDD可以用来作为分布式索引</p>
+<p>Spark的特性时能够<strong>控制数据在不同节点上的分区</strong>，用户自定义分区策略</p>
+</li>
+<li>执行策略<br>MapReduce在数据Shuffle之前花费了大量时间来排序，而Spark任务在Shuffle中不是所有情景都需要排序，支持基于Hash的分布式聚合，调度中采用DAG，每一轮次的输出结果在内存中缓存</li>
+<li>任务调度开销<br>MapReduce是为了运行长达数小时的批量作业而设计的，极端情况下，提交一个任务的延迟非常高</li>
+</ul>
+<h3 id="Spark的架构"><a href="#Spark的架构" class="headerlink" title="Spark的架构"></a>Spark的架构</h3><p><img src="/img/Spark 架构图.png" alt="Spark 架构图"></p>
+<p>Spark采用了分布式计算的Master-Slave模型，Master对应集群中的含有Master进程的节点，Slave对应集群中的含有Worker进程的节点</p>
+<p>Client：作为用户的客户端负责提交应用</p>
+<p>ClusterManager：在Standalone模式中为Master（主节点），控制整个集群，监控Worker。在Yarn模式下为资源管理器</p>
+<p>Worker：用来管理计算节点和创建<code>Executor</code>并行处理任务；从节点，启动Executor或者Driver，在Yarn模式下为NodeManager</p>
+<p>Dirver：驱动器节点，应用逻辑执行的起点，负责作业的调度，即Task任务的分发；运行Application的main()函数并创建SparkContext</p>
+<p><strong>在执行阶段，Driver会将Task和Task所依赖的file和jar序列化传递给对应的Worker机器，同时Executor对相应数据分区的任务进行处理</strong></p>
+<p>Executor：执行器节点，在worker node上执行任务的组件，用于启动线程池运行任务。每个Application都有一组独立的Executor</p>
+<blockquote>
+<p>使用驱动器节点和执行器节点的概念来描述执行Spark应用的进程，而主节点（master）和工作节点（worker）的概念则被用来分别表述集群管理器中的中心化部分和分布式部分</p>
+</blockquote>
+<p>Spark整体流程：<code>Client</code>提交应用,<code>Master</code>找到一个<code>Worker</code>启动<code>Driver</code>,<code>Driver</code>向<code>Master</code>或者<code>资源管理器</code>申请资源,之后将应用转化为<code>RDD Graph</code>,再由<code>DAGScheduler</code>将<code>RDD Graph</code>转化为<code>Stage</code>的有向无环图提交给<code>TaskScheduler</code>,由<code>TaskScheduler</code>提交任务给<code>Executor</code>执行。在任务执行的过程中,其他组件协同工作,确保整个应用顺利执行</p>
+<h3 id="Spark系统部署"><a href="#Spark系统部署" class="headerlink" title="Spark系统部署"></a>Spark系统部署</h3><p><img src="/img/部署图.png" alt="Spark 部署图"></p>
+<ul>
+<li>整个集群分为Master和Worker节点，相当于Hadoop的Master和Slave节点</li>
+<li>Master节点上常驻Master守护进程,负责管理全部的Worker节点</li>
+<li>Worker节点上常驻Worker守护进程,负责与Master节点通信并管理executors</li>
+<li>Driver官方解释是“The    process    running    the    main()    function    of    the    application    and    creating    the SparkContext”；Application就是用户自己写的Spark程序(driver    program),比如WordCount.scala<ul>
+<li>如果driver    program在Master上运行,比如在Master上运行<code>./bin/run-example    SparkPi    10</code>那么SparkPi就是Master上的Driver</li>
+<li>如果是YARN集群,那么Driver可能被调度到Worker节点上运行(比如上图中的Worker Node2)</li>
+<li>如果直接在自己的PC上运行driver program,比如在Eclipse中运行driver    program，使用<code>val    sc    =    new    SparkContext(&quot;spark://master:7077&quot;,    &quot;AppName&quot;)</code>去连接    master的话,driver就在自己的PC上,但是不推荐这样的方式,因为PC和Workers可能不在一个局域网,driver和executor之间的通信会很慢</li>
+</ul>
+</li>
+<li>每个Worker上存在一个或者多个ExecutorBackend进程。每个进程包含一个Executor对象,该对象持有一个线程池,每个线程可以执行一个task（即一个Worker对应多个Executor，一个Executor对应一个线程池，对应多个线程（任务））</li>
+<li>每个application包含一个driver和多个executors,每个executor里面运行的tasks都属于同一个application</li>
+<li>在Standalone版本中,ExecutorBackend被实例化成CoarseGrainedExecutorBackend进程</li>
+<li>Worker通过持有ExecutorRunner对象来控制CoarseGrainedExecutorBackend的启停</li>
+</ul>
+<h3 id="RDD："><a href="#RDD：" class="headerlink" title="RDD："></a>RDD：</h3><ul>
+<li>RDD内的partition可以分布在不同机器的内存中，<strong>每个分区对应着一个Block</strong>，当内存不够时可以存储到磁盘上</li>
+<li>RDD之间通过lineage（血统）产生依赖关系，这种关系对容错有着很重要的作用，因为通过lineage来恢复分区，基本没有检查点开销。失效时只需重新计算丢失的那些RDD分区，无需回滚（Roll Back）</li>
+<li>一些算子<ul>
+<li>flatMap：将原来RDD中的每个元素通过函数f转换为新的元素,并将生成的RDD的每个集合中的元素合并为一个集合（即Array(Array(1,2),Array(3,4))转变成Array(1,2,3,4)）</li>
+<li>cache：将RDD元素从磁盘缓存到内存中</li>
+<li>persist：对RDD元素进行缓存，数据还存在哪里由StorageLevel枚举类型决定</li>
+<li>行动算子触发作业的提交</li>
+</ul>
+</li>
+<li>一些注意<ul>
+<li>适当使用持久化：因为RDD具有lazy计算的特点，所以每次行动算子都会把之前的RDD重复计算一遍，因此对于反复使用的RDD，应该进行持久化</li>
+<li>对于反复调用的join操作，可先对大数据集进行Hash分区以减少网络I/O传输来优化：因为join操作会将两个数据集中的所有键的哈希值都求出来，然后将Hash值相同的记录通过网络传到同一台机器上，然后在那台机器上对键相同的所有记录进行连接操作。因此事先对大数据集进行Hash分区，并持久化，每次就只需对小数据集进行网络传输</li>
+<li>map不会保留父RDD的分区方式，因为经过map其key值可能会发生变化，可以使用mapValues来保留父RDD的分区方式</li>
+<li>可通过Partitioner对象来设置RDD的分区方式</li>
+</ul>
+</li>
+<li>文件的读写<ul>
+<li>textFile：非结构化，普通文本文件，每行一条记录</li>
+<li>sequenceFile：结构化，键值对数据，Hadoop文件格式，通过writable类来序列化</li>
+<li>objectFile：对象文件，使用的是Java序列化</li>
+</ul>
+</li>
+<li>累加器</li>
+<li>广播变量：广播变量只会被发到各个节点一次，作为只读值处理，<strong>修改这个值不会影响到别的节点</strong><ul>
+<li>广播较大值时，可以选择既快又好的序列化格式来提高效率（因为默认的为Java的序列化库，其对于除基本类型的数组以外的任何对象都比较低效），比如说Kryo序列化库</li>
+</ul>
+</li>
+</ul>
+<h3 id="关键性能考察"><a href="#关键性能考察" class="headerlink" title="关键性能考察"></a>关键性能考察</h3><ol>
+<li>并行度<ul>
+<li>过低：出现资源闲置的情况；<br>如下图所示，部分Exceutor并没有Task<br><img src="/img/并行度过低.png" alt="并行度过低图"></li>
+<li>过高：每个分区产生的间接开销累计更大（比如一个大数据集过滤掉了大部分记录）<br>并行度调优：</li>
+<li>数据混洗时，通过参数的方式为混洗后的RDD指定并行度</li>
+<li>针对已有的RDD可以重新分区，repartition：把RDD随机打乱并分成设定的分区数目；如果是确定减少RDD分区，可以使用coalesce操作，不会打乱数据</li>
+</ul>
+</li>
+<li>序列化格式<br>第三方序列化库：kryo<br>-Dsun.io.serialization.extended DebugInfo=true来查找引起<code>NotSerializableException</code>的类<br>设置spark-submit的–driver-java-options和–executor-java-options来打开上面的JVM选项</li>
+</ol>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Spark/" rel="tag">#Spark</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/12/08/Hdfs/" rel="next" title="Hdfs概述">
+                <i class="fa fa-chevron-left"></i> Hdfs概述
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/12/19/Spark作业执行情况/" rel="prev" title="Spark作业执行情况">
+                Spark作业执行情况 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/12/09/初识Spark/"
+           data-title="初识Spark" data-url="http://yoursite.com/2016/12/09/初识Spark/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="RacingDawn" />
+          <p class="site-author-name" itemprop="name">RacingDawn</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">15</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Spark之于Hadoop"><span class="nav-number">1.</span> <span class="nav-text">Spark之于Hadoop</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Spark的架构"><span class="nav-number">2.</span> <span class="nav-text">Spark的架构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Spark系统部署"><span class="nav-number">3.</span> <span class="nav-text">Spark系统部署</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RDD："><span class="nav-number">4.</span> <span class="nav-text">RDD：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关键性能考察"><span class="nav-number">5.</span> <span class="nav-text">关键性能考察</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">RacingDawn</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"racingdawn"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("lycOgRgz3PeJigkxA1l9HqdC-gzGzoHsz", "S3JkSDCncyyD4JHrIPFBpuj7");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+
+</body>
+</html>
